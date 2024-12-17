@@ -1,19 +1,19 @@
 import 'dart:io';
+import 'dart:math';
 
-void checkprime(int number){
-  List<int> num = [
-    for(var i=1; i<=number; i++)
-      if(number % i == 0) i
-    ];
-
-  if(num.length == 2)  {
-    print("$number is a prime number");
-  }else{
-    print("$number is not a prime number");
+bool isPrime(var num){
+  if(num < 2) return false;
+  for(var i = 2; i<=sqrt(num).toInt(); i++){
+    if(num % i == 0) return false;
   }
+  return true;
 }
-void main() {
-  print("Enter the number: ");
-  int num = int.parse(stdin.readLineSync()!);
-  checkprime(num);
+main() {
+  print("Enter the number");
+  var num = int.parse(stdin.readLineSync()!);
+  if (isPrime(num)) {
+    print("$num is a prime number");
+  } else {
+    print("$num is not a prime number");
+  }
 }
