@@ -1,21 +1,24 @@
 import 'dart:io';
 
 void disp(int n) {
-  for (var i = 1; i <= n - 1; i++) {
-    // Print the horizontal line (---)
-    print(" --- " * (n - 1));
+  for (int i = 0; i < n; i++) {
+    // Print the top border of each row
+    stdout.writeln(" ---" * n);
 
-    if (i < n) {
-      print("|   " * (n - 1) + "  |");
+    // Print the vertical dividers and spaces for each row
+    stdout.write("|");
+    for (int j = 0; j < n; j++) {
+      stdout.write("   |");
     }
+    stdout.writeln(); // Move to the next line
   }
 
-  // Print the final horizontal line after the last row
-  print(" --- " * (n - 1));
+  // Print the bottom border of the board
+  stdout.writeln(" ---" * n);
 }
 
 void main() {
-  print("Enter the number of board size (n x n): ");
-  int n = int.parse(stdin.readLineSync()!);
-  disp(n);
+  stdout.writeln("Enter the number:");
+  int num = int.parse(stdin.readLineSync()!);
+  disp(num);
 }
